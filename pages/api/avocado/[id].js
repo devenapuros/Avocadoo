@@ -1,5 +1,5 @@
 // import { NextApiRequest, NextApiResponse } from "next";
-import Database from "../../../database/db";
+import Database from "@database/db";
 
 export default async function getAvocadoById(req, res) {
     const db = new Database();

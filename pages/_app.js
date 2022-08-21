@@ -1,8 +1,15 @@
-// import App from 'next/app'
+import { Layout } from "@components/Layout";
+import "@styles/global.css";
 
 function MyApp({ Component, pageProps }) {
-    return <Component {...pageProps} />;
+    return (
+        <Layout>
+            <Component {...pageProps} />
+        </Layout>
+    );
 }
+
+export default MyApp;
 
 // Only uncomment this method if you have blocking data requirements for
 // every single page in your application. This disables the ability to
@@ -15,5 +22,3 @@ function MyApp({ Component, pageProps }) {
 //
 //   return { ...appProps }
 // }
-
-export default MyApp;
