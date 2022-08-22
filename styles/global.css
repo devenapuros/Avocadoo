@@ -1,5 +1,6 @@
 :root {
-    --green-color: #21ba45;
+    --green-color: #069c54;
+    --green-color-alt: #21ba45;
 }
 
 * {
@@ -14,10 +15,17 @@
 /* TOPBAR */
 
 .topbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
     padding: 0.5rem 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
+}
+
+.topbar .header {
     border-bottom: 1px solid #eee;
 }
 
@@ -80,4 +88,162 @@
 .cart:hover {
     background-color: #eee;
     cursor: pointer;
+}
+
+/*FOOTER */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.footer-row {
+    padding: 3rem 0;
+    display: flex;
+    gap: 5rem;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.8rem;
+}
+
+.footer-column .column-title {
+    font-weight: 600;
+    color: #222;
+}
+
+.footer-column ul li {
+    padding: 0.12rem;
+    font-size: 0.9rem;
+    color: #333;
+    transition: color 300ms ease;
+}
+
+.footer-column ul li:hover {
+    color: var(--green-color);
+    cursor: pointer;
+}
+
+.brand-column {
+    color: #222;
+}
+
+.brand-column .logo {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.social-links .social-item {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.84rem;
+    color: #222;
+    text-decoration: none;
+    transition: color 300ms ease;
+}
+
+.social-links .social-item svg {
+    transform: scale(0.9);
+    fill: #222;
+    transition: fill 300ms ease;
+}
+
+.social-links .social-item:hover {
+    color: var(--green-color);
+}
+
+.social-links .social-item:hover svg {
+    fill: var(--green-color);
+}
+
+.footer-credits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    color: #777;
+    font-size: 0.88rem;
+}
+
+.footer-credits a {
+    text-decoration: none;
+    color: var(--green-color);
+}
+
+.footer-developer {
+    background-color: #eee;
+    padding: 0.7rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #444;
+    font-size: 0.88rem;
+}
+
+.footer-developer a {
+    color: var(--green-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 4rem;
+    /* background-color:salmon; */
+    padding: 0 4rem;
+}
+
+/* BUTTONS */
+
+.btn {
+    padding: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border-radius: 7px;
+    gap: 0.4rem;
+}
+
+.primary-btn {
+    background-color: var(--green-color-alt);
+    color: white;
+    border: 1px solid var(--green-color-alt);
+    transition: filter 300ms ease;
+}
+
+.primary-btn:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: #222;
+    border: 1px solid #222;
+    transition: background-color 300ms ease;
+}
+
+.secondary-btn:hover {
+    cursor: pointer;
+    background-color: #eee;
 }

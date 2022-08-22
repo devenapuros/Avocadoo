@@ -10,6 +10,7 @@ export default function ProductItem() {
         fetch(`http://localhost:3000/api/avocado/${productId}`)
             .then((res) => res.json())
             .then((response) => {
+                console.log(response);
                 const { data } = response;
                 setAvocadoDetails(data);
             });
@@ -24,7 +25,7 @@ export default function ProductItem() {
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <img src={avocadoDetails.image} width="250px" />
                     <strong>{avocadoDetails.name}</strong>
-                    <h1>{`\$${avocadoDetails.price}`}</h1>
+                    <h1>{`$${avocadoDetails.price}`}</h1>
                     <small style={{ color: "gray" }}>{avocadoDetails.id}</small>
                     <p>{avocadoDetails.attributes.description}</p>
                 </div>

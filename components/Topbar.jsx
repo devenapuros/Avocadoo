@@ -1,6 +1,5 @@
 import { Logo } from "./Logo";
 import { Cart } from "./Cart";
-import Image from "next/image";
 
 export const Topbar = () => {
     return (
