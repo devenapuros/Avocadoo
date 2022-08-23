@@ -1,8 +1,8 @@
-export const PrimaryButton = () => {
+export const PrimaryButton = ({ label, icon }) => {
     return (
         <button className="btn primary-btn">
-            PrimaryButton
-            <img src="/avo.svg" width="32px" height="auto" />
+            {label}
+            {icon}
         </button>
     );
 };

@@ -1,8 +1,8 @@
-export const SecondaryButton = () => {
+export const SecondaryButton = ({ label, icon }) => {
     return (
         <button className="btn secondary-btn">
-            SecondaryButton
-            <img src="/think.svg" width="32px" height="auto" />
+            {label}
+            {icon}
         </button>
     );
 };

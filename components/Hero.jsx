@@ -5,15 +5,28 @@ import { SecondaryButton } from "./SecondaryButton";
 export const Hero = () => {
     return (
         <main className="hero">
-            <div>
-                <h1>From trees to your table</h1>
+            <div className="slogans">
+                <h1>
+                    From trees to <br />
+                    your table
+                </h1>
                 <p>Salads guacamole, and more food can you prepare</p>
-                <PrimaryButton />
-                <SecondaryButton />
+                <div className="button-group">
+                    <PrimaryButton
+                        label="Buy now"
+                        icon={<img src="/avo.svg" width="32px" height="auto" />}
+                    />
+                    <SecondaryButton
+                        label="Why buy avocados?"
+                        icon={
+                            <img src="/think.svg" width="32px" height="auto" />
+                        }
+                    />
+                </div>
             </div>
             <img
-                src="/green-avocados-on-white-surface.jpg"
-                width="650px"
+                src="/green-avocados-hd1.png"
+                width="600px"
                 height="auto"
             />
         </main>
