@@ -10,7 +10,7 @@ export const Hero = () => {
                     From trees to <br />
                     your table
                 </h1>
-                <p>Salads guacamole, and more food can you prepare</p>
+                <p>The best avocados for prepare your favorite food.</p>
                 <div className="button-group">
                     <PrimaryButton
                         label="Buy now"
@@ -24,11 +24,7 @@ export const Hero = () => {
                     />
                 </div>
             </div>
-            <img
-                src="/green-avocados-hd1.png"
-                width="600px"
-                height="auto"
-            />
+            <img src="/green-avocados-hd1.png" width="600px" height="auto" />
         </main>
     );
 };
