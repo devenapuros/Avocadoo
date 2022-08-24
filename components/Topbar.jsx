@@ -1,6 +1,7 @@
 import { Logo } from "./Logo";
 import { Cart } from "./Cart";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export const Topbar = () => {
     const [header, setHeader] = useState(false);
@@ -22,10 +23,12 @@ export const Topbar = () => {
             <div className="right">
                 <ul className="menu">
                     <li>
-                        <a href="">Offers</a>
+                        <a href="#offers">Offers</a>
                     </li>
                     <li>
-                        <a href="">Store</a>
+                        <Link href="/store">
+                            <a>Store</a>
+                        </Link>
                     </li>
                     <li>
                         <a href="">About us</a>

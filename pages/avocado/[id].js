@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { PrimaryButton } from "@components/PrimaryButton";
+import { NumberInput } from "@components/NumberInput";
+import Image from "next/image";
+import PosMeMuero from "@icons/PosMeMuero";
+import { SecondaryButton } from "@components/SecondaryButton";
 
 export default function ProductItem() {
     const router = useRouter();
@@ -16,19 +21,87 @@ export default function ProductItem() {
             });
     }, []);
 
+    useEffect(() => {
+        console.log(productId);
+    }, [productId]);
+
     return (
         <div>
             {!avocadoDetails && (
-                <h1 style={{ color: "#333" }}>404 | Product not found</h1>
+                <section className="product-detail not-found">
+                    <PosMeMuero size="200px" />
+                    <h1>Sorry! We could not find the product.</h1>
+                    <SecondaryButton
+                        label="Go to the store"
+                        icon={<img src="/avo.svg" width="32px" height="auto" />}
+                    />
+                </section>
             )}
             {avocadoDetails && (
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                    <img src={avocadoDetails.image} width="250px" />
-                    <strong>{avocadoDetails.name}</strong>
-                    <h1>{`$${avocadoDetails.price}`}</h1>
-                    <small style={{ color: "gray" }}>{avocadoDetails.id}</small>
-                    <p>{avocadoDetails.attributes.description}</p>
-                </div>
+                <section className="product-detail">
+                    <div className="product-data">
+                        <Image
+                            src={avocadoDetails.image}
+                            width="340px"
+                            height="340px"
+                        />
+                        <div className="product-right">
+                            <div>
+                                <h1>{avocadoDetails.name}</h1>
+                                <small className="kg-label">
+                                    SKU: {avocadoDetails.sku}
+                                </small>
+                            </div>
+                            <div>
+                                <small className="text-muted muted-price">
+                                    $1.45
+                                </small>
+                                <span className="price">
+                                    {`$${avocadoDetails.price}`}
+                                    <div className="offer-tag">10% OFF</div>
+                                </span>
+                            </div>
+                            <div className="add-container">
+                                <NumberInput />
+                                <PrimaryButton
+                                    label="Add to cart"
+                                    icon={
+                                        <img
+                                            src="/basket.svg"
+                                            width="32px"
+                                            height="auto"
+                                        />
+                                    }
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <article>
+                        <h2>About this avocado</h2>
+                        <p>{avocadoDetails.attributes.description}</p>
+                    </article>
+                    <article>
+                        <h2>Atributtes</h2>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Shape</td>
+                                    <td>{avocadoDetails.attributes.shape}</td>
+                                </tr>
+                                <tr>
+                                    <td>Hardiness</td>
+                                    <td>
+                                        {avocadoDetails.attributes.hardiness}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Taste</td>
+                                    <td>{avocadoDetails.attributes.taste}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+                </section>
             )}
         </div>
     );

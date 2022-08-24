@@ -2,7 +2,7 @@ import { SecondaryButton } from "./SecondaryButton";
 
 export const OffersLayout = ({ children }) => {
     return (
-        <section className="offers">
+        <section className="offers" id="offers">
             <h1>Offers of the day</h1>
             <article className="offers-grid">{children}</article>
             <SecondaryButton

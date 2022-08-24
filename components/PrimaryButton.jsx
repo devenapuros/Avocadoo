@@ -1,4 +1,4 @@
-export const PrimaryButton = ({ label, icon }) => {
+export const PrimaryButton = ({ label, icon, handleClick }) => {
     return (
         <button className="btn primary-btn">
             {label}
