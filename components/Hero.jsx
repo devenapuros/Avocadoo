@@ -1,8 +1,13 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { PrimaryButton } from "./PrimaryButton";
 import { SecondaryButton } from "./SecondaryButton";
 
 export const Hero = () => {
+    const router = useRouter();
+
+    const goToStore = () => router.push("/store");
+    const goToWhyBuy = () => router.push("/why-buy");
     return (
         <main className="hero">
             <div className="slogans">
@@ -15,12 +20,14 @@ export const Hero = () => {
                     <PrimaryButton
                         label="Buy now"
                         icon={<img src="/avo.svg" width="32px" height="auto" />}
+                        handleClick={goToStore}
                     />
                     <SecondaryButton
                         label="Why buy avocados?"
                         icon={
                             <img src="/think.svg" width="32px" height="auto" />
                         }
+                        handleClick={goToWhyBuy}
                     />
                 </div>
             </div>
