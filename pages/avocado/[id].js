@@ -5,6 +5,7 @@ import { NumberInput } from "@components/NumberInput";
 import Image from "next/image";
 import PosMeMuero from "@icons/PosMeMuero";
 import { SecondaryButton } from "@components/SecondaryButton";
+import { BagIcon } from "@icons/BagIcon";
 
 export default function ProductItem() {
     const router = useRouter();
@@ -42,8 +43,8 @@ export default function ProductItem() {
                     <div className="product-data">
                         <Image
                             src={avocadoDetails.image}
-                            width="340px"
-                            height="340px"
+                            width="370px"
+                            height="370px"
                         />
                         <div className="product-right">
                             <div>
@@ -62,16 +63,10 @@ export default function ProductItem() {
                                 </span>
                             </div>
                             <div className="add-container">
-                                <NumberInput />
+                                <NumberInput placeholder="Quantity in kilograms" />
                                 <PrimaryButton
                                     label="Add to cart"
-                                    icon={
-                                        <img
-                                            src="/basket.svg"
-                                            width="32px"
-                                            height="auto"
-                                        />
-                                    }
+                                    icon={<BagIcon />}
                                 />
                             </div>
                         </div>
