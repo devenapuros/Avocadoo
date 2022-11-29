@@ -39,7 +39,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2px 7px;
+    padding: 3px 7px 1px;
     border: 1px solid orange;
     color: #ae4804;
     background-color: #f1a66150;
@@ -55,6 +55,10 @@ body {
     font-size: 0.78rem;
     color: #757575;
     border: 1px solid #aaa;
+}
+
+.underline-text {
+    text-decoration: underline 2px var(--green-color-alt);
 }
 
 /* TOPBAR */
@@ -291,7 +295,7 @@ body {
     outline: none;
     border: 0;
     border-radius: 10px;
-    gap: 0.5rem;
+    gap: 0.7rem;
     font-size: 1rem;
     font-weight: 500;
     transition: all 300ms ease;
@@ -320,10 +324,6 @@ body {
     background-color: transparent;
     color: var(--title-color);
     border: 1px solid var(--title-color);
-}
-
-.secondary-btn svg {
-    stroke: var(--title-color);
 }
 
 .secondary-btn:hover {
@@ -412,18 +412,17 @@ body {
 .store {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    margin: 7rem;
+    width: 1024px;
+    margin: 7rem auto;
     gap: 3rem;
 }
 
 .store h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 .store .store-grid {
     display: grid;
-    justify-content: center;
     grid-template-columns: repeat(auto-fit, 300px);
     gap: 3rem;
 }

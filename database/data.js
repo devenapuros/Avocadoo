@@ -1,10 +1,12 @@
-const data = {
-    "2zd33b8c": {
+const data = [
+    {
         name: "Maluma Hass Avocado",
         id: "2zd33b8c",
         sku: "NUR72KCM",
-        price: 1.15,
+        price: 3.1,
         image: "/images/maluma.jpg",
+        off: "20",
+        offPrice: 2.15,
         attributes: {
             description:
                 "A relatively new cultivar, it was, the pretty boy baby, discovered in South Africa in the early 1990s by Mr. A.G. (Dries) Joubert. Maluma Babyy. It is a chance seedling of unknown parentage",
@@ -13,7 +15,7 @@ const data = {
             taste: "Catchy, is an avocado",
         },
     },
-    "6trfgkkj": {
+    {
         name: "Fuerte Avocado",
         id: "6trfgkkj",
         sku: "AX4M8SJV",
@@ -27,7 +29,7 @@ const data = {
             taste: "Magnificent, is a strong avocado",
         },
     },
-    "7bcr49em": {
+    {
         name: "Gwen Hass Avocado",
         id: "7bcr49em",
         sku: "HYA78F6J",
@@ -41,7 +43,7 @@ const data = {
             taste: "Superb, is an avocado",
         },
     },
-    "098323ks": {
+    {
         name: "Bacon Avocado",
         id: "098323ks",
         sku: "BXD100BLK",
@@ -55,11 +57,13 @@ const data = {
             taste: "Creamy, is an avocado",
         },
     },
-    b8uthe2y: {
+    {
         name: "Hass Avocado",
         id: "b8uthe2y",
         sku: "RMRCZN7E",
-        price: 1.39,
+        price: 2.39,
+        off: "10",
+        offPrice: 1.99,
         image: "/images/hass.jpg",
         attributes: {
             description:
@@ -69,7 +73,7 @@ const data = {
             taste: "Gorgeous, is an avocado",
         },
     },
-    ewxsd6xb: {
+    {
         name: "Lamb Hass Avocado",
         id: "ewxsd6xb",
         sku: "N55229ZA",
@@ -83,7 +87,7 @@ const data = {
             taste: "Great, is an avocado",
         },
     },
-    fpr72m9k: {
+    {
         name: "Pinkerton Avocado",
         id: "fpr72m9k",
         sku: "B4HZ42TM",
@@ -97,7 +101,7 @@ const data = {
             taste: "Marvelous, is an avocado",
         },
     },
-    t9dv25gs: {
+    {
         name: "Reed Avocado",
         id: "t9dv25gs",
         sku: "ZY3T9XXC",
@@ -111,11 +115,13 @@ const data = {
             taste: "Exquisite, is an avocado",
         },
     },
-    t345w48y: {
+    {
         name: "Zutano Avocado",
         id: "t345w48y",
         sku: "MW79ZZ6Y",
-        price: 1.25,
+        price: 1.20,
+        off: "8",
+        offPrice: 0.9,
         image: "/images/zutano.jpg",
         attributes: {
             description:
@@ -125,6 +131,6 @@ const data = {
             taste: "Splendid, is an avocado",
         },
     },
-};
+];
 
 export default data;

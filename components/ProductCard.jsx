@@ -2,27 +2,32 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export const ProductCard = () => {
+export const ProductCard = ({ avo }) => {
     return (
-        <Link href={`/avocado/${"6trfgkkj"}`}>
+        <Link href={`/avocado/${avo.id}`}>
             <a className="product-card">
                 <Image
-                    src="/images/bacon.jpg"
+                    src={avo.image}
                     width="300px"
                     height="300px"
                     objectFit="contain"
-                    alt="Image of avocado"
+                    alt={`Image of ${avo.name}`}
                 />
                 <div className="card-body">
-                    <span className="product-name">Avocado 1</span>
+                    <span className="product-name">{avo.name}</span>
                     <div className="price-container">
-                        <small className="text-muted muted-price">$1.45</small>
+                        {avo.off && (
+                            <small className="text-muted muted-price">
+                                ${avo.price}
+                            </small>
+                        )}
                         <p className="text-muted price">
-                            $1.45 <span className="kg-label">KG</span>
+                            ${avo.offPrice || avo.price}{" "}
+                            <span className="kg-label">KG</span>
                         </p>
                     </div>
                 </div>
-                <div className="offer-tag">10% OFF</div>
+                {avo.off && <div className="offer-tag">{avo.off}%</div>}
             </a>
         </Link>
     );

@@ -7,19 +7,20 @@ class Database {
     constructor() {}
 
     async getAll() {
-        const asArray = Object.values(allData);
         await randomDelay();
-        return asArray;
+        return allData;
     }
 
     async getById(id) {
-        if (!Object.prototype.hasOwnProperty.call(allData, id)) {
-            return null;
-        }
-
-        const entry = allData[id];
+        const entry = allData.find((item) => item.id === id);
         await randomDelay();
         return entry;
+    }
+
+    async getOffers() {
+        const offers = allData.filter((item) => item.off);
+        await randomDelay();
+        return offers;
     }
 }
 
