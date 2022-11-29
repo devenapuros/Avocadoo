@@ -7,7 +7,7 @@ class MyDocument extends Document {
                 <Head>
                     <link
                         rel="shortcut icon"
-                        type="image/pngg"
+                        type="image/png"
                         href="/avocado32.png"
                     />
                     <link
