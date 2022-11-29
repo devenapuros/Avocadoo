@@ -3,6 +3,9 @@ import { QuestionIcon } from "@icons/QuestionIcon";
 import { SecondaryButton } from "./SecondaryButton";
 
 export const Hero = () => {
+
+    const goToStore = () => router.push("/store");
+    const goToWhyBuy = () => router.push("/why-buy");
     return (
         <main className="hero">
             <div className="slogans">

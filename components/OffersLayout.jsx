@@ -2,6 +2,8 @@ import { AvocadoEmoji } from "@icons/AvocadoEmoji";
 import { SecondaryButton } from "./SecondaryButton";
 
 export const OffersLayout = ({ children }) => {
+    const goToStore = () => router.push("/store");
+
     return (
         <section className="offers" id="offers">
             <h1>Offers of the day</h1>
