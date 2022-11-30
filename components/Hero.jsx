@@ -6,8 +6,8 @@ export const Hero = () => {
         <main className="hero">
             <div className="slogans">
                 <h1>
-                    From trees to <br />
-                    your table.
+                    From the trees<br />
+                    to your table.
                 </h1>
                 <p>The best avocados for prepare your favorite food.</p>
                 <div className="button-group">

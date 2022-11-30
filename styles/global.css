@@ -4,12 +4,12 @@
     --title-color: #111;
     --text-color: #333;
     --gray-color: #666;
+    --hover: #ececec;
 }
 
 * {
     margin: 0;
     padding: 0;
-    appearance: none;
     list-style-type: none;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
@@ -124,21 +124,34 @@ body {
 
 /* CART */
 
-.cart {
+.cart-link {
     padding: 0.7rem 1.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.6rem;
     border-radius: 32px;
     transition: background-color 300ms ease;
+    text-decoration: none;
     font-weight: 600;
     color: #222;
 }
 
-.cart:hover {
+.cart-link:hover {
     background-color: #eee;
     cursor: pointer;
+}
+
+.cart-link .cart-counter {
+    padding: 2px 6px 3px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--green-color-alt);
+    font-size: 0.8rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: white;
 }
 
 /*FOOTER */
@@ -388,7 +401,7 @@ body {
 .muted-price {
     text-decoration: line-through;
     color: #777;
-    font-size: 0.75rem;
+    font-size: 0.83rem;
 }
 
 .price {
@@ -432,23 +445,25 @@ body {
 .product-detail {
     display: flex;
     flex-direction: column;
-    margin: 7rem auto;
+    margin: 5rem auto;
     width: 100%;
     max-width: 768px;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .product-detail.not-found {
     margin: 6rem 20rem;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
 }
 
 .product-detail.not-found h1 {
-    color: #444;
+    color: var(--text-color);
 }
 
 .product-detail article {
+    margin: 2rem 0 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -457,11 +472,12 @@ body {
 .product-detail h2 {
     font-weight: 600;
     font-size: 1.3rem;
+    color: var(--title-color);
 }
 
 .product-detail p {
     font-size: 0.9rem;
-    color: #111;
+    color: var(--text-color);
 }
 
 .product-detail table {
@@ -483,7 +499,7 @@ body {
 
 .product-detail table tr td:first-child {
     font-weight: 600;
-    color: #111;
+    color: var(--title-color);
 }
 
 .product-detail table tr td:last-child {
@@ -496,6 +512,10 @@ body {
     gap: 1rem;
 }
 
+.product-detail .product-data .product-title {
+    font-size: 1.9rem;
+}
+
 .product-detail .product-data img {
     border-radius: 1rem;
 }
@@ -503,53 +523,68 @@ body {
 .product-data .product-right {
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
+    padding-top: 1rem;
     gap: 1.5rem;
 }
 
 .product-data .product-right .price {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     gap: 0.7rem;
 }
 
 .product-data .product-right .add-container {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 1.5rem;
+}
+
+.product-detail .back-btn {
+    padding: 0.45rem 1rem;
+    width: fit-content;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 0.93rem;
+}
+
+.product-detail .back-btn:hover {
+    color: var(--title-color);
+}
+
+.product-detail .back-btn svg {
+    stroke: var(--text-color);
+    transition: all 300ms ease;
+}
+
+.product-detail .back-btn:hover svg {
+    transform: translateX(-0.4rem);
+    stroke: var(--title-color);
 }
 
 /* NUMBER INPUT */
 
 .input-container {
     display: flex;
+    align-items: center;
+    gap: 0.35rem;
 }
 
-.input-container input {
+.add-container label {
+    font-size: 0.93rem;
+    color: var(--text-color);
+}
+
+.input-container select {
     outline: none;
-    border: 1px solid #ddd;
-    padding: 0 0.5rem;
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
+    border: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: var(--title-color);
+    background-color: transparent;
+    transition: all 300ms ease;
 }
 
-.input-btn {
-    border: 1px solid #ddd;
-}
-
-.input-btn svg {
-    fill: #666;
-    transform: scale(0.78);
-}
-
-.input-btn.left {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: 0;
-}
-
-.input-btn.right {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left: 0;
+.input-container select:hover {
+    cursor: pointer;
 }

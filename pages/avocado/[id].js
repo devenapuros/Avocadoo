@@ -6,64 +6,77 @@ import Image from "next/image";
 import PosMeMuero from "@icons/PosMeMuero";
 import { SecondaryButton } from "@components/SecondaryButton";
 import { BagIcon } from "@icons/BagIcon";
+import { LeftArrowIcon } from "@icons/LeftArrowIcon";
 
-export default function ProductItem() {
+export const getServerSideProps = async (context) => {
+    const res = await fetch(
+        `http://localhost:3000/api/avocado/${context.params["id"]}`
+    );
+    const response = await res.json();
+    return {
+        props: {
+            response,
+        },
+    };
+};
+
+export default function ProductItem({ response }) {
+    const avo = response.data;
     const router = useRouter();
-    const productId = router.query.id;
-    const [avocadoDetails, setAvocadoDetails] = useState(null);
-
-    useEffect(() => {
-        fetch(`http://localhost:3000/api/avocado/${productId}`)
-            .then((res) => res.json())
-            .then((response) => {
-                console.log(response);
-                const { data } = response;
-                setAvocadoDetails(data);
-            });
-    }, []);
-
-    useEffect(() => {
-        console.log(productId);
-    }, [productId]);
 
     return (
         <div>
-            {!avocadoDetails && (
+            {!avo && (
                 <section className="product-detail not-found">
                     <PosMeMuero size="200px" />
-                    <h1>Sorry! We could not find the product.</h1>
-                    <SecondaryButton
-                        label="Go to the store"
-                        icon={<img src="/avo.svg" width="32px" height="auto" />}
-                    />
+                    <h1>
+                        Sorry! We could not find the avocado you are looking
+                        for.
+                    </h1>
+                    <a href="/store" className="btn secondary-btn">
+                        Go to the store
+                    </a>
                 </section>
             )}
-            {avocadoDetails && (
+            {avo && (
                 <section className="product-detail">
+                    <button
+                        className="btn back-btn"
+                        onClick={() => router.back()}
+                    >
+                        <LeftArrowIcon />
+                        Go back
+                    </button>
                     <div className="product-data">
-                        <Image
-                            src={avocadoDetails.image}
-                            width="370px"
-                            height="370px"
-                        />
+                        <Image src={avo.image} width="370px" height="370px" />
                         <div className="product-right">
                             <div>
-                                <h1>{avocadoDetails.name}</h1>
+                                <h1 className="product-title">{avo.name}</h1>
                                 <small className="kg-label">
-                                    SKU: {avocadoDetails.sku}
+                                    SKU: {avo.sku}
                                 </small>
                             </div>
                             <div>
-                                <small className="text-muted muted-price">
-                                    $1.45
-                                </small>
-                                <span className="price">
-                                    {`$${avocadoDetails.price}`}
-                                    <div className="offer-tag">10% OFF</div>
-                                </span>
+                                {avo.off && (
+                                    <small className="text-muted muted-price">
+                                        ${avo.price}
+                                    </small>
+                                )}
+                                <div className="price">
+                                    <span>${avo.offPrice || avo.price}</span>
+                                    <span className="kg-label">KG</span>
+                                    {avo.off && (
+                                        <div className="offer-tag">
+                                            {avo.off}% OFF
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                             <div className="add-container">
-                                <NumberInput placeholder="Quantity in kilograms" />
+                                <NumberInput
+                                    placeholder="Quantity in kilograms"
+                                    min={1}
+                                />
                                 <PrimaryButton
                                     label="Add to cart"
                                     icon={<BagIcon />}
@@ -73,25 +86,23 @@ export default function ProductItem() {
                     </div>
                     <article>
                         <h2>About this avocado</h2>
-                        <p>{avocadoDetails.attributes.description}</p>
+                        <p>{avo.attributes?.description}</p>
                     </article>
                     <article>
-                        <h2>Atributtes</h2>
+                        <h2>Attributes</h2>
                         <table>
                             <tbody>
                                 <tr>
                                     <td>Shape</td>
-                                    <td>{avocadoDetails.attributes.shape}</td>
+                                    <td>{avo.attributes?.shape}</td>
                                 </tr>
                                 <tr>
                                     <td>Hardiness</td>
-                                    <td>
-                                        {avocadoDetails.attributes.hardiness}
-                                    </td>
+                                    <td>{avo.attributes?.hardiness}</td>
                                 </tr>
                                 <tr>
                                     <td>Taste</td>
-                                    <td>{avocadoDetails.attributes.taste}</td>
+                                    <td>{avo.attributes?.taste}</td>
                                 </tr>
                             </tbody>
                         </table>

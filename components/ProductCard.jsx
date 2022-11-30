@@ -27,7 +27,7 @@ export const ProductCard = ({ avo }) => {
                         </p>
                     </div>
                 </div>
-                {avo.off && <div className="offer-tag">{avo.off}%</div>}
+                {avo.off && <div className="offer-tag">{avo.off}% OFF</div>}
             </a>
         </Link>
     );
