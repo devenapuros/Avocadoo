@@ -15,10 +15,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     background-color: #fcfdfe;
 }
@@ -491,6 +487,7 @@ body {
     padding: 0.7rem 1rem;
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
+    color: var(--text-color);
 }
 
 .product-detail table tr:last-child td {
@@ -542,7 +539,7 @@ body {
     padding: 0.45rem 1rem;
     width: fit-content;
     background-color: transparent;
-    color: var(--text-color);
+    color: var(--title-color);
     font-size: 0.93rem;
 }
 
@@ -551,7 +548,7 @@ body {
 }
 
 .product-detail .back-btn svg {
-    stroke: var(--text-color);
+    stroke: var(--title-color);
     transition: all 300ms ease;
 }
 
@@ -576,6 +573,7 @@ body {
 .input-container select {
     outline: none;
     border: 0;
+    padding-right: 0.35rem;
     font-size: 0.95rem;
     font-weight: 500;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",

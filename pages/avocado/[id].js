@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { PrimaryButton } from "@components/PrimaryButton";
 import { NumberInput } from "@components/NumberInput";
 import Image from "next/image";
 import PosMeMuero from "@icons/PosMeMuero";
-import { SecondaryButton } from "@components/SecondaryButton";
 import { BagIcon } from "@icons/BagIcon";
 import { LeftArrowIcon } from "@icons/LeftArrowIcon";
+import { useState } from "react";
 
 export const getServerSideProps = async (context) => {
     const res = await fetch(
@@ -23,6 +22,7 @@ export const getServerSideProps = async (context) => {
 export default function ProductItem({ response }) {
     const avo = response.data;
     const router = useRouter();
+    const [quantity, setQuantity] = useState(1);
 
     return (
         <div>
@@ -74,6 +74,9 @@ export default function ProductItem({ response }) {
                             </div>
                             <div className="add-container">
                                 <NumberInput
+                                    id="kilograms"
+                                    value={quantity}
+                                    handleChange={setQuantity}
                                     placeholder="Quantity in kilograms"
                                     min={1}
                                 />
