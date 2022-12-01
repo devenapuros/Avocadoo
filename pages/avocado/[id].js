@@ -6,6 +6,8 @@ import PosMeMuero from "@icons/PosMeMuero";
 import { BagIcon } from "@icons/BagIcon";
 import { LeftArrowIcon } from "@icons/LeftArrowIcon";
 import { useState } from "react";
+import { useCartContext } from "context/CartContext";
+import Link from "next/link";
 
 export const getServerSideProps = async (context) => {
     const res = await fetch(
@@ -23,6 +25,11 @@ export default function ProductItem({ response }) {
     const avo = response.data;
     const router = useRouter();
     const [quantity, setQuantity] = useState(1);
+    const cart = useCartContext();
+
+    const addToCart = () => {
+        cart.addProduct(avo, quantity);
+    };
 
     return (
         <div>
@@ -33,9 +40,9 @@ export default function ProductItem({ response }) {
                         Sorry! We could not find the avocado you are looking
                         for.
                     </h1>
-                    <a href="/store" className="btn secondary-btn">
-                        Go to the store
-                    </a>
+                    <Link href="/store">
+                        <a className="btn secondary-btn">Go to the store</a>
+                    </Link>
                 </section>
             )}
             {avo && (
@@ -83,6 +90,7 @@ export default function ProductItem({ response }) {
                                 <PrimaryButton
                                     label="Add to cart"
                                     icon={<BagIcon />}
+                                    handleClick={addToCart}
                                 />
                             </div>
                         </div>

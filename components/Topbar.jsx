@@ -23,7 +23,9 @@ export const Topbar = () => {
             <div className="right">
                 <ul className="menu">
                     <li>
-                        <a href="/#offers">Offers</a>
+                        <Link href="/#offers">
+                            <a>Offers</a>
+                        </Link>
                     </li>
                     <li>
                         <Link href="/store">

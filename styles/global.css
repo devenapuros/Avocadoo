@@ -45,8 +45,9 @@ body {
 
 .kg-label {
     background-color: #eee;
-    padding: 1px 3px;
+    padding: 2px 4px;
     height: fit-content;
+    width: fit-content;
     border-radius: 5px;
     font-size: 0.78rem;
     color: #757575;
@@ -55,6 +56,10 @@ body {
 
 .underline-text {
     text-decoration: underline 2px var(--green-color-alt);
+}
+
+.divider {
+    border-bottom: 1px solid var(--hover);
 }
 
 /* TOPBAR */
@@ -585,4 +590,143 @@ body {
 
 .input-container select:hover {
     cursor: pointer;
+}
+
+/* CART PAGE */
+
+.cart-page {
+    display: flex;
+    flex-direction: column;
+    margin: 6rem auto;
+    width: 100%;
+    max-width: 768px;
+    gap: 2rem;
+}
+
+.cart-empty {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    border: 2px dashed #ccc;
+    border-radius: 1rem;
+}
+
+.cart-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-empty h3 {
+    color: var(--gray-color);
+}
+
+.cart-empty svg {
+    stroke: var(--gray-color);
+}
+
+/* CART GRID */
+
+.cart-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CART ITEM */
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    padding-right: 10px;
+    border-radius: 6px;
+}
+
+.cart-item:hover {
+    background-color: #f5f6f7;
+}
+
+.cart-section {
+    display: flex;
+    align-items: center;
+}
+
+.cart-section.left {
+    gap: 1rem;
+}
+
+.cart-section.right {
+    gap: 3rem;
+}
+
+.cart-section .avo-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.cart-section .avo-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--title-color);
+}
+
+.cart-section .avo-name:hover {
+    text-decoration: underline;
+}
+
+.cart-section .avo-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.cart-section .input-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.cart-section .input-container label {
+    font-size: 0.81rem;
+    color: var(--gray-color);
+}
+
+.cart-section .input-container select {
+    font-size: 0.95rem;
+}
+
+.cart-item .remove-btn {
+    display: flex;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem;
+    transition: all 300ms ease;
+}
+
+.cart-item .remove-btn:hover {
+    cursor: pointer;
+    background-color: var(--hover);
+}
+
+.cart-item .remove-btn svg {
+    stroke: var(--gray-color);
 }
