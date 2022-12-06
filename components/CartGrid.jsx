@@ -1,11 +1,23 @@
 import { BagIcon } from "@icons/BagIcon";
 import { useCartContext } from "context/CartContext";
-import React from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { CartItem } from "./CartItem";
-import { PrimaryButton } from "./PrimaryButton";
+import { Loader } from "./Loader";
 
 export const CartGrid = () => {
+    const router = useRouter();
     const cart = useCartContext();
+    const [loading, setLoading] = useState(false);
+
+    const checkout = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+            router.push("/checkout");
+        }, 1500);
+    };
+
     return (
         <div className="cart-grid">
             {cart.products.map((product) => (
@@ -17,7 +29,17 @@ export const CartGrid = () => {
                     <small>Total:</small>
                     <h2>${cart.totalPrice}</h2>
                 </div>
-                <PrimaryButton label="Checkout" icon={<BagIcon />} />
+                <button
+                    className={`btn primary-btn ${loading && "loading"}`}
+                    onClick={checkout}
+                >
+                    {!loading && (
+                        <>
+                            Checkout <BagIcon />
+                        </>
+                    )}
+                    {loading && <Loader />}
+                </button>
             </div>
         </div>
     );

@@ -24,7 +24,10 @@ export const CartItem = ({ product }) => {
             </div>
             <div className="cart-section right">
                 <small>${product.unitPrice}</small>
-                <NumberInput />
+                <NumberInput
+                    value={product.quantity}
+                    handleChange={(val) => cart.setQuantity(val, product.id)}
+                />
                 <span className="avo-price">${product.totalPrice}</span>
                 <button
                     className="remove-btn"

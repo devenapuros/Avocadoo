@@ -21,19 +21,24 @@ const CartContextProvider = ({ children }) => {
             unitPrice: product.offPrice || product.price,
             image: product.image,
             quantity,
-            totalPrice: (product.offPrice || product.price) * quantity,
+            totalPrice: Number.parseFloat(
+                (product.offPrice || product.price) * quantity
+            ).toFixed(2),
         };
     };
 
     const updateTotalPrice = (productsList) => {
         let total = 0;
-        productsList.forEach((item) => (total += item.totalPrice));
-        setTotalPrice(total);
+        productsList.forEach(
+            (item) => (total += Number.parseFloat(item.totalPrice))
+        );
+        setTotalPrice(total.toFixed(2));
     };
 
     const addProduct = (product, quantity) => {
         const existingItem = products.find((item) => item.id === product.id);
-        if (existingItem) setQuantity(quantity, existingItem.id);
+        if (existingItem)
+            setQuantity(quantity + existingItem.quantity, existingItem.id);
         else {
             const new_item = getNewItem(product, quantity);
             const new_products = [...products, new_item];
@@ -51,13 +56,20 @@ const CartContextProvider = ({ children }) => {
     const setQuantity = (quantity, id) => {
         const new_products = products.map((item) => {
             if (item.id === id) {
-                item.quantity += quantity;
-                item.totalPrice = item.quantity * item.unitPrice;
+                item.quantity = quantity;
+                item.totalPrice = Number.parseFloat(
+                    item.quantity * item.unitPrice
+                ).toFixed(2);
             }
             return item;
         });
         setProducts(new_products);
         updateTotalPrice(new_products);
+    };
+
+    const clearCart = () => {
+        setProducts([]);
+        updateTotalPrice([]);
     };
 
     return (
@@ -68,6 +80,7 @@ const CartContextProvider = ({ children }) => {
                 addProduct,
                 removeProduct,
                 setQuantity,
+                clearCart,
             }}
         >
             {children}

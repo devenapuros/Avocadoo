@@ -1,4 +1,5 @@
 :root {
+    --background: #fcfdfe;
     --green-color: #069c54;
     --green-color-alt: #21ba45;
     --title-color: #111;
@@ -16,7 +17,7 @@
 }
 
 body {
-    background-color: #fcfdfe;
+    background-color: var(--background);
 }
 
 /* REUSABLE CLASSES */
@@ -302,6 +303,7 @@ body {
 /* BUTTONS */
 
 .btn {
+    position: relative;
     padding: 0.8rem 1rem;
     display: flex;
     justify-content: center;
@@ -314,6 +316,7 @@ body {
     font-weight: 500;
     transition: all 300ms ease;
     text-decoration: none;
+    overflow: hidden;
 }
 
 .btn:hover {
@@ -323,7 +326,6 @@ body {
 .primary-btn {
     background-color: var(--green-color-alt);
     color: white;
-    border: 1px solid var(--green-color-alt);
 }
 
 .primary-btn svg {
@@ -562,12 +564,48 @@ body {
     stroke: var(--title-color);
 }
 
+@keyframes grow {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(30);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.product-detail .primary-btn.selected::before {
+    content: "";
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 100%;
+    background-color: var(--green-color);
+    z-index: 0;
+    animation: grow 430ms alternate infinite;
+}
+
+.product-detail .primary-btn svg.selected {
+    stroke: var(--green-color);
+    fill: white;
+    z-index: 1;
+    animation: bounce 34ms forwards;
+}
+
 /* NUMBER INPUT */
 
 .input-container {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.8rem;
 }
 
 .add-container label {
@@ -575,21 +613,59 @@ body {
     color: var(--text-color);
 }
 
-.input-container select {
-    outline: none;
-    border: 0;
-    padding-right: 0.35rem;
-    font-size: 0.95rem;
-    font-weight: 500;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    color: var(--title-color);
-    background-color: transparent;
-    transition: all 300ms ease;
+.input-container .input-field {
+    display: flex;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: var(--background);
 }
 
-.input-container select:hover {
+.input-container .input-field:focus-within {
+    display: flex;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    outline: 2px solid var(--green-color-alt);
+}
+
+.input-field .input-btn {
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+}
+
+.input-field .input-btn svg {
+    stroke: var(--text-color);
+}
+
+.input-field .input-btn:hover {
     cursor: pointer;
+}
+
+.input-field .input-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.input-field .input-btn:hover svg {
+    stroke: var(--title-color);
+}
+
+.input-field .input-btn:disabled svg {
+    stroke: var(--text-color);
+}
+
+.input-field input {
+    padding: 0 8px;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    width: 3rem;
+    font-size: 0.93rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 /* CART PAGE */
@@ -642,6 +718,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.bottom-section .primary-btn {
+    width: 11rem;
+}
+
+.bottom-section .primary-btn.loading {
+    background-color: var(--green-color);
 }
 
 /* CART ITEM */
@@ -698,7 +782,7 @@ body {
 .cart-section .input-container {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0;
+    gap: 0.2rem;
 }
 
 .cart-section .input-container label {
@@ -706,10 +790,7 @@ body {
     color: var(--gray-color);
 }
 
-.cart-section .input-container select {
-    font-size: 0.95rem;
-}
-
+/* Cart item */
 .cart-item .remove-btn {
     display: flex;
     border: 0;
@@ -729,4 +810,123 @@ body {
 
 .cart-item .remove-btn svg {
     stroke: var(--gray-color);
+}
+
+/* Loader */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    height: 1.47rem;
+    width: 1.47rem;
+    border: 3px solid transparent;
+    border-radius: 100%;
+    border-left: 3px solid white;
+    animation: spin 1s ease infinite;
+}
+
+/* Checkout page */
+
+.checkout-page {
+    display: flex;
+    flex-direction: column;
+    margin: 8rem auto 2rem;
+    width: 100%;
+    max-width: 600px;
+    gap: 2rem;
+}
+
+.checkout-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.checkout-card .card-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 3.5rem 2rem 2rem;
+    background-color: var(--green-color-alt);
+    border-radius: 1rem;
+    color: white;
+}
+
+.checkout-card .card-header h1 {
+    font-size: 1.5rem;
+}
+
+.checkout-card .card-header svg {
+    position: absolute;
+    background-color: var(--background);
+    top: -2rem;
+    border-radius: 100%;
+    fill: var(--green-color-alt);
+}
+
+table.stats-container {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    border-spacing: 0;
+}
+
+table.stats-container tr td {
+    padding: 0.8rem 1rem;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+table.stats-container tr:last-child td {
+    border-bottom: 0;
+}
+
+table.stats-container tr td:last-child {
+    border-right: 0;
+}
+
+.stat-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.stat-column span {
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+.stat-column small {
+    color: var(--gray-color);
+}
+
+.checkout-card .eco-label {
+    padding: 0.7rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--hover);
+    color: var(--text-color);
+    border-radius: 6px;
+}
+
+.checkout-card .eco-label a {
+    color: var(--green-color);
+    text-decoration: none;
+}
+
+.checkout-card .eco-label a:hover {
+    text-decoration: underline var(--green-color);
 }
