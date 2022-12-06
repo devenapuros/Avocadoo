@@ -8,6 +8,7 @@ import { LeftArrowIcon } from "@icons/LeftArrowIcon";
 import { useState } from "react";
 import { useCartContext } from "context/CartContext";
 import Link from "next/link";
+import { CheckIcon } from "@icons/CheckIcon";
 
 export const getServerSideProps = async (context) => {
     const res = await fetch(
@@ -26,9 +27,14 @@ export default function ProductItem({ response }) {
     const router = useRouter();
     const [quantity, setQuantity] = useState(1);
     const cart = useCartContext();
+    const [selected, setSelected] = useState(false);
 
     const addToCart = () => {
         cart.addProduct(avo, quantity);
+        setSelected(true);
+        setTimeout(() => {
+            setSelected(false);
+        }, 700);
     };
 
     return (
@@ -87,11 +93,19 @@ export default function ProductItem({ response }) {
                                     placeholder="Quantity in kilograms"
                                     min={1}
                                 />
-                                <PrimaryButton
-                                    label="Add to cart"
-                                    icon={<BagIcon />}
-                                    handleClick={addToCart}
-                                />
+                                <button
+                                    className={`btn primary-btn ${
+                                        selected && "selected"
+                                    }`}
+                                    onClick={addToCart}
+                                >
+                                    {!selected && (
+                                        <>
+                                            Add to cart <BagIcon />
+                                        </>
+                                    )}
+                                    {selected && <CheckIcon />}
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -1,21 +1,31 @@
+import { MinusIcon } from "@icons/MinusIcon";
+import { PlusIcon } from "@icons/PlusIcon";
+
 export const NumberInput = ({ id, value, handleChange, placeholder }) => {
     return (
         <div className="input-container">
             <label htmlFor={id}>Cantidad:</label>
-            <select
-                name=""
-                id={id}
-                value={value}
-                onChange={(event) => handleChange(event.target.value)}
-                placeholder={placeholder}
-            >
-                <option value="1">1 kilogram</option>
-                <option value="2">2 kilogram</option>
-                <option value="3">3 kilogram</option>
-                <option value="4">4 kilogram</option>
-                <option value="5">5 kilogram</option>
-                <option value="6">6 kilogram</option>
-            </select>
+            <div className="input-field">
+                <button
+                    className="input-btn left"
+                    disabled={value === 1}
+                    onClick={() => handleChange(value - 1)}
+                >
+                    <MinusIcon />
+                </button>
+                <input
+                    type="text"
+                    value={value}
+                    placeholder={placeholder}
+                    readOnly
+                />
+                <button
+                    className="input-btn right"
+                    onClick={() => handleChange(value + 1)}
+                >
+                    <PlusIcon />
+                </button>
+            </div>
         </div>
     );
 };
