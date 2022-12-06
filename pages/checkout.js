@@ -3,6 +3,7 @@ import { useCartContext } from "context/CartContext";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { AvocadoEmoji } from "@icons/AvocadoEmoji";
 
 export default function checkout() {
     const router = useRouter();
@@ -56,7 +57,9 @@ export default function checkout() {
                 </small>
             </article>
             <Link href="/store">
-                <a className="btn secondary-btn">Back to the store</a>
+                <a className="btn secondary-btn">
+                    Back to the store <AvocadoEmoji size={36} />{" "}
+                </a>
             </Link>
         </section>
     );

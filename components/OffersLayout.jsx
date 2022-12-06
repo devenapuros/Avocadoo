@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { AvocadoEmoji } from "@icons/AvocadoEmoji";
 import Link from "next/link";
 
 export const OffersLayout = ({ children }) => {
@@ -8,8 +8,7 @@ export const OffersLayout = ({ children }) => {
             <article className="offers-grid">{children}</article>
             <Link href="/store">
                 <a className="btn secondary-btn">
-                    See more avocados{" "}
-                    <Image src="/avo.svg" width="32" height="32" />
+                    See more avocados <AvocadoEmoji size={36} />
                 </a>
             </Link>
         </section>
