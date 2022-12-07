@@ -18,7 +18,7 @@ export const Hero = () => {
                             Shut up and take my money! <MoneyIcon />
                         </a>
                     </Link>
-                    <Link href="/">
+                    <Link href="/why-buy">
                         <a className="btn secondary-btn">
                             Why buy? <ThinkFaceEmoji size={36} />
                         </a>

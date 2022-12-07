@@ -33,7 +33,7 @@ export const Topbar = () => {
                         </Link>
                     </li>
                     <li>
-                        <a href="">About us</a>
+                        <a href="/about">About us</a>
                     </li>
                 </ul>
                 <Cart />
