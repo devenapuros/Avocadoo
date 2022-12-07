@@ -1,24 +1,28 @@
 import { ProductCard } from "@components/ProductCard";
 
 export const getServerSideProps = async () => {
-    const res = await fetch("http://localhost:3000/api/avocados");
-    const response = await res.json();
-    return {
-        props: {
-            response,
-        },
-    };
+    try {
+        const res = await fetch(`${process.env.API_URL}/avocados`);
+        const avocados = await res.json();
+        return {
+            props: {
+                avocados,
+            },
+        };
+    } catch (error) {
+        return { props: {} };
+    }
 };
 
-export default function Store({ response }) {
-    const avocados = response.data;
+export default function Store({ avocados }) {
     return (
         <section className="store">
             <h1>All our products</h1>
             <article className="store-grid">
-                {avocados.map((avo) => (
-                    <ProductCard key={avo.id} avo={avo} />
-                ))}
+                {avocados &&
+                    avocados.map((avo) => (
+                        <ProductCard key={avo.id} avo={avo} />
+                    ))}
             </article>
         </section>
     );

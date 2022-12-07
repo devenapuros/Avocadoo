@@ -8,7 +8,7 @@ class MyDocument extends Document {
                     <link
                         rel="shortcut icon"
                         type="image/png"
-                        href="/avocado32.png"
+                        href="/favicon.png"
                     />
                     <link
                         rel="preconnect"
