@@ -3,7 +3,7 @@
     --green-color: #069c54;
     --green-color-alt: #21ba45;
     --title-color: #111;
-    --text-color: #333;
+    --text-color: #353535;
     --gray-color: #666;
     --hover: #ececec;
 }
@@ -217,7 +217,7 @@ body {
     align-items: center;
     gap: 0.15rem;
     font-size: 0.84rem;
-    color: #222;
+    color: var(--text-color);
     text-decoration: none;
     transition: color 300ms ease;
 }
@@ -929,4 +929,104 @@ table.stats-container tr td:last-child {
 
 .checkout-card .eco-label a:hover {
     text-decoration: underline var(--green-color);
+}
+
+/*Why section */
+
+.why-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 768px;
+    margin: 7rem auto;
+}
+
+.why-section .image {
+    border-radius: 1rem;
+}
+
+.why-section header {
+    width: 100%;
+}
+
+.why-section header h1 {
+    font-size: 2.2rem;
+}
+
+.why-section header p {
+    color: var(--gray-color);
+    font-size: 1.2rem;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.why-grid .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.why-grid .info-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.why-grid .info-item span {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #bbb;
+}
+
+.why-grid .info-item h1 {
+    font-size: 1.1rem;
+}
+
+.why-grid .info-item p {
+    font-size: 0.91rem;
+    color: var(--text-color);
+}
+
+.credit-link {
+    text-align: center;
+    color: var(--gray-color);
+    font-size: 0.95rem;
+}
+
+.credit-link a {
+    color: var(--green-color);
+    text-decoration: none;
+}
+
+.credit-link a:hover {
+    text-decoration: underline;
+}
+
+.why-section .secondary-btn {
+    width: fit-content;
+}
+
+/* ABOUT SECTION */
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    margin: 8rem auto 3rem;
+    width: 100%;
+    max-width: 600px;
+    gap: 1.5rem;
+}
+
+.about-section h1 {
+    font-size: 1.8rem;
+}
+
+.about-section p {
+    color: var(--text-color);
+    font-size: 0.93rem;
 }

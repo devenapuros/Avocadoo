@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { PrimaryButton } from "@components/PrimaryButton";
 import { NumberInput } from "@components/NumberInput";
 import Image from "next/image";
 import PosMeMuero from "@icons/PosMeMuero";
@@ -11,26 +10,27 @@ import Link from "next/link";
 import { CheckIcon } from "@icons/CheckIcon";
 
 export const getServerSideProps = async (context) => {
-    const res = await fetch(
-        `http://localhost:3000/api/avocado/${context.params["id"]}`
-    );
-    const response = await res.json();
-    return {
-        props: {
-            response,
-        },
-    };
+    try {
+        const res = await fetch(`${process.env.API_URL}/avocado/${context.params["id"]}`);
+        const avocado = await res.json();
+        return {
+            props: {
+                avocado,
+            },
+        };
+    } catch (error) {
+        return { props: {} };
+    }
 };
 
-export default function ProductItem({ response }) {
-    const avo = response.data;
+export default function ProductItem({ avocado }) {
     const router = useRouter();
     const [quantity, setQuantity] = useState(1);
     const cart = useCartContext();
     const [selected, setSelected] = useState(false);
 
     const addToCart = () => {
-        cart.addProduct(avo, quantity);
+        cart.addProduct(avocado, quantity);
         setSelected(true);
         setTimeout(() => {
             setSelected(false);
@@ -39,7 +39,7 @@ export default function ProductItem({ response }) {
 
     return (
         <div>
-            {!avo && (
+            {!avocado && (
                 <section className="product-detail not-found">
                     <PosMeMuero size="200px" />
                     <h1>
@@ -51,7 +51,7 @@ export default function ProductItem({ response }) {
                     </Link>
                 </section>
             )}
-            {avo && (
+            {avocado && (
                 <section className="product-detail">
                     <button
                         className="btn back-btn"
@@ -61,26 +61,34 @@ export default function ProductItem({ response }) {
                         Go back
                     </button>
                     <div className="product-data">
-                        <Image src={avo.image} width="370px" height="370px" />
+                        <Image
+                            src={avocado.image}
+                            width="370px"
+                            height="370px"
+                        />
                         <div className="product-right">
                             <div>
-                                <h1 className="product-title">{avo.name}</h1>
+                                <h1 className="product-title">
+                                    {avocado.name}
+                                </h1>
                                 <small className="kg-label">
-                                    SKU: {avo.sku}
+                                    SKU: {avocado.sku}
                                 </small>
                             </div>
                             <div>
-                                {avo.off && (
+                                {avocado.off && (
                                     <small className="text-muted muted-price">
-                                        ${avo.price}
+                                        ${avocado.price}
                                     </small>
                                 )}
                                 <div className="price">
-                                    <span>${avo.offPrice || avo.price}</span>
+                                    <span>
+                                        ${avocado.offPrice || avocado.price}
+                                    </span>
                                     <span className="kg-label">KG</span>
-                                    {avo.off && (
+                                    {avocado.off && (
                                         <div className="offer-tag">
-                                            {avo.off}% OFF
+                                            {avocado.off}% OFF
                                         </div>
                                     )}
                                 </div>
@@ -111,7 +119,7 @@ export default function ProductItem({ response }) {
                     </div>
                     <article>
                         <h2>About this avocado</h2>
-                        <p>{avo.attributes?.description}</p>
+                        <p>{avocado.attributes?.description}</p>
                     </article>
                     <article>
                         <h2>Attributes</h2>
@@ -119,15 +127,15 @@ export default function ProductItem({ response }) {
                             <tbody>
                                 <tr>
                                     <td>Shape</td>
-                                    <td>{avo.attributes?.shape}</td>
+                                    <td>{avocado.attributes?.shape}</td>
                                 </tr>
                                 <tr>
                                     <td>Hardiness</td>
-                                    <td>{avo.attributes?.hardiness}</td>
+                                    <td>{avocado.attributes?.hardiness}</td>
                                 </tr>
                                 <tr>
                                     <td>Taste</td>
-                                    <td>{avo.attributes?.taste}</td>
+                                    <td>{avocado.attributes?.taste}</td>
                                 </tr>
                             </tbody>
                         </table>

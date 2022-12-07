@@ -4,11 +4,11 @@ import { ProductCard } from "@components/ProductCard";
 
 export const getServerSideProps = async () => {
     try {
-        const res = await fetch("http://localhost:3000/api/offers");
-        const response = await res.json();
+        const res = await fetch(`${process.env.API_URL}/offers`);
+        const offers = await res.json();
         return {
             props: {
-                response,
+                offers,
             },
         };
     } catch (error) {
@@ -16,8 +16,7 @@ export const getServerSideProps = async () => {
     }
 };
 
-export default function Home({ response }) {
-    const offers = response?.data;
+export default function Home({ offers }) {
     return (
         <>
             <Hero />
