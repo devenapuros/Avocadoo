@@ -217,7 +217,7 @@ body {
     align-items: center;
     gap: 0.15rem;
     font-size: 0.84rem;
-    color: #222;
+    color: var(--text-color);
     text-decoration: none;
     transition: color 300ms ease;
 }
@@ -1009,4 +1009,24 @@ table.stats-container tr td:last-child {
 
 .why-section .secondary-btn {
     width: fit-content;
+}
+
+/* ABOUT SECTION */
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    margin: 8rem auto 3rem;
+    width: 100%;
+    max-width: 600px;
+    gap: 1.5rem;
+}
+
+.about-section h1 {
+    font-size: 1.8rem;
+}
+
+.about-section p {
+    color: var(--text-color);
+    font-size: 0.93rem;
 }
