@@ -1,5 +1,6 @@
 import { MoneyIcon } from "@icons/MoneyIcon";
 import { ThinkFaceEmoji } from "@icons/ThinkFaceEmoji";
+import Image from "next/image";
 import Link from "next/link";
 
 export const Hero = () => {
@@ -25,7 +26,7 @@ export const Hero = () => {
                     </Link>
                 </div>
             </div>
-            <img src="/green-avocados-hd1.webp" width="600px" height="auto" />
+            <Image src="/green-avo.webp" width={600} height={394} />
         </main>
     );
 };
