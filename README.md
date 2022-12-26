@@ -17,9 +17,9 @@
 
 This project was built using these technologies:
 
-* Next.js
-* Yarn
-* Deployed on Vercel
+* [Next.js](https://nextjs.org/)
+* [Yarn](https://yarnpkg.com/)
+* Deployed on [Vercel](https://vercel.com/)
 
 ## Features
 
