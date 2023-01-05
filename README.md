@@ -9,7 +9,7 @@
     <br />
     <a href="https://avocadoo.vercel.app">Go to website</a>&nbsp;
     ·
-    &nbsp;<a href="https://github.com/devenapuros/Avocadoo">Report Bug</a>
+    &nbsp;<a href="https://github.com/devenapuros/Avocadoo/issues">Report Bug</a>
   </p>
 <br/>
 
